@@ -17,10 +17,12 @@ var Queue = function(){
     if(qCount) {
       qCount -= 1;
     }
+    
     var result = storage[0];
+    Array.prototype.unshift(storage);
     delete storage[qCount];
     return result;
-  };
+    };
 
   someInstance.size = function(){    
     return qCount;
@@ -28,8 +30,3 @@ var Queue = function(){
 
   return someInstance;
 };
-
-// enqueue(a) -> 0 (qCount = 1)
-// enqueue(b) -> 1 (qCount = 2)
-// dequeue() -> a (0)
-// enqueue(c) -> 1
